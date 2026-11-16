@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Kendibah</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1a1917;
+      --muted: #6b6760;
+      --accent: #2b6cb0;
+      --border: #e8e5e0;
+      --max: 680px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 0 24px 80px;
+    }
+
+    header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .summary-box p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .summary-box p:last-child { margin-bottom: 0; }
+
+    .summary-box strong {
+      font-weight: 500;
+    }
+
+    section {
+      margin-bottom: 44px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 28px 0 12px;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    h2, h3, .setting { scroll-margin-top: 16px; }
+
+    p {
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0;
+    }
+
+    ul li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    ul li strong { font-weight: 500; }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover { border-bottom-color: var(--accent); }
+
+    /* Feature table: a plain table on wide screens, one block per feature on phones. */
+
+    .features {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 20px 0;
+    }
+
+    .features th,
+    .features td {
+      text-align: left;
+      vertical-align: top;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features tbody tr:last-child th,
+    .features tbody tr:last-child td { border-bottom: 0; }
+
+    .features thead th {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .features tbody th {
+      width: 34%;
+      font-weight: 500;
+    }
+
+    /* The coming-soon table has four brand columns, so it is tighter on wide screens. */
+    @media (min-width: 601px) {
+      .features-wide { font-size: 14px; }
+
+      .features-wide th,
+      .features-wide td { padding: 10px 12px; }
+
+      .features-wide tbody th { width: 22%; }
+    }
+
+    @media (max-width: 600px) {
+      .features,
+      .features tbody,
+      .features tr,
+      .features th,
+      .features td { display: block; }
+
+      .features thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      .features tr {
+        padding: 12px 18px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .features tbody tr:last-child { border-bottom: 0; }
+
+      .features th,
+      .features td {
+        border-bottom: 0;
+        padding: 0;
+      }
+
+      .features tbody th {
+        width: auto;
+        margin-bottom: 4px;
+      }
+
+      .features td {
+        position: relative;
+        padding: 2px 0 2px 5.5em;
+      }
+
+      .features td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        color: var(--muted);
+      }
+
+      .features-wide td { padding-left: 6.5em; }
+    }
+
+    .setting {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+
+    .setting p { font-size: 15px; margin-bottom: 8px; }
+
+    .setting p:last-child { margin-bottom: 0; }
+
+    .path {
+      color: var(--muted);
+    }
+
+    .path strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .contact-block p { font-size: 15px; }
+
+    /* Support form: fills in an email draft, see the script at the end of the page. */
+
+    .support-form label {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .optional {
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .support-form select,
+    .support-form input,
+    .support-form textarea {
+      display: block;
+      width: 100%;
+      font: inherit;
+      font-size: 16px; /* 16px or more keeps iOS from zooming in on focus */
+      line-height: 1.5;
+      color: var(--text);
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+    }
+
+    .support-form select {
+      -webkit-appearance: none;
+      appearance: none;
+      padding-right: 36px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236b6760' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+
+    .support-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .support-form select:focus,
+    .support-form input:focus,
+    .support-form textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: -1px;
+      border-color: var(--accent);
+    }
+
+    .support-form .button {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      background: var(--accent);
+      border: 0;
+      border-radius: 6px;
+      padding: 11px 22px;
+    }
+
+    .support-form .button:hover { filter: brightness(0.92); }
+
+    .support-form .button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .support-form .form-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .email-alt {
+      font-size: 15px;
+      margin-top: 16px;
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: 56px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="app-name">Kendibah</div>
+    <h1>Frequently Asked Questions</h1>
+    <p class="meta">For Roku and Samsung TVs &nbsp;·&nbsp; Last updated: November 16, 2026</p>
+  </header>
+
+  <main>
+
+    <div class="summary-box">
+      <p><strong>The short version:</strong> Kendibah works with Roku and Samsung TVs on your Wi-Fi network. Most remote features work on both. A few depend on what the TV supports, and some need a setting turned on in the TV first.</p>
+    </div>
+
+    <section>
+      <h2 id="features">1. What Kendibah Can Do on Each TV</h2>
+
+      <table class="features">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Roku</th>
+            <th scope="col">Samsung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pairing</th>
+            <td data-label="Roku">None needed</td>
+            <td data-label="Samsung">Choose Allow on the TV</td>
+          </tr>
+          <tr>
+            <th scope="row">Trackpad, Back, Home</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Volume and mute</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn off</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn on</th>
+            <td data-label="Roku">Yes, with a <a href="#roku-fast-tv-start">TV setting</a></td>
+            <td data-label="Samsung">Yes, with a <a href="#samsung-power-on">TV setting</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Play/pause</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Rewind and fast forward</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Channel up and down</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Options menu</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Keyboard and dictation</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">In Samsung's own keyboard only</td>
+          </tr>
+          <tr>
+            <th scope="row">Apps</th>
+            <td data-label="Roku">The TV's own list, with artwork</td>
+            <td data-label="Samsung">Installed apps from a known set, no artwork</td>
+          </tr>
+          <tr>
+            <th scope="row">Inputs</th>
+            <td data-label="Roku">Listed by name</td>
+            <td data-label="Samsung">One tile that opens the TV's input menu</td>
+          </tr>
+          <tr>
+            <th scope="row">Art mode</th>
+            <td data-label="Roku">Backdrops (experimental)</td>
+            <td data-label="Samsung">Yes, on The Frame</td>
+          </tr>
+          <tr>
+            <th scope="row">Now Playing and Lock Screen</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul>
+        <li>On Samsung TVs, what you type or dictate goes to Samsung's own on-screen keyboard. Apps that draw their own keyboard, such as YouTube and the Apple TV app, don't receive it.</li>
+        <li>Now Playing needs the TV to report what's playing. Only Roku does, so Now Playing and the Lock Screen controls work with Roku only.</li>
+        <li>Your iPhone's volume buttons control the TV only while Kendibah is open on screen.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="settings">2. TV Settings You May Need to Turn On</h2>
+      <p>Some features need a setting turned on in the TV. Menu names and paths change between models and software versions, so the paths below are the ones on most models, not all. If yours look different, look for a setting with the same or a similar name.</p>
+
+      <h3 id="roku">Roku</h3>
+
+      <div class="setting" id="roku-control-by-mobile-apps">
+        <h4>Control by mobile apps</h4>
+        <p class="path"><strong>Settings &gt; System &gt; Advanced system settings &gt; Control by mobile apps</strong></p>
+        <p>Choose the option that lets mobile apps control the TV. The names of the choices depend on your Roku's software version, and an option that limits or turns off control will block Kendibah. Without this setting, the Roku refuses the remote's keys and the app list. Kendibah tells you when a Roku is blocking it.</p>
+      </div>
+
+      <div class="setting" id="roku-fast-tv-start">
+        <h4>Fast TV Start</h4>
+        <p class="path"><strong>Settings &gt; System &gt; Power</strong></p>
+        <p>Helps the TV answer Kendibah while it's off, so Power can turn it on.</p>
+      </div>
+
+      <h3 id="samsung">Samsung</h3>
+
+      <div class="setting" id="samsung-power-on">
+        <h4>Power On with Mobile</h4>
+        <p class="path">On most models: <strong>Settings &gt; All Settings &gt; Connection &gt; Network &gt; Expert Settings</strong></p>
+        <p class="path">On 2021 and earlier models: <strong>Settings &gt; General &gt; Network &gt; Expert Settings</strong></p>
+        <p>Lets your iPhone turn the TV on.</p>
+      </div>
+
+      <div class="setting" id="samsung-ip-remote">
+        <h4>IP Remote</h4>
+        <p class="path">In the same Expert Settings menu as Power On with Mobile.</p>
+        <p>Some TVs need this turned on before they accept a remote over the network.</p>
+      </div>
+
+      <div class="setting" id="samsung-denied">
+        <h4>If you chose Deny by mistake</h4>
+        <p class="path">On most models: <strong>Settings &gt; General &gt; External Device Manager &gt; Device Connection Manager &gt; Device List</strong></p>
+        <p>Remove Kendibah from the list, then pair the TV again in Kendibah and choose Allow.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="coming-soon">3. Coming Soon: More TV Brands</h2>
+      <p>Support for these brands is in development and hasn't been tested on real TVs yet, so details may change before release.</p>
+      <p>Recent Sony BRAVIA TVs run Google TV and are expected to work like the Google TV column.</p>
+
+      <table class="features features-wide">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">LG</th>
+            <th scope="col">Google TV</th>
+            <th scope="col">Fire TV</th>
+            <th scope="col">Vizio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pairing</th>
+            <td data-label="LG">Choose Allow on the TV</td>
+            <td data-label="Google TV">Type the code the TV shows</td>
+            <td data-label="Fire TV">Type the PIN the TV shows</td>
+            <td data-label="Vizio">Type the PIN the TV shows</td>
+          </tr>
+          <tr>
+            <th scope="row">Trackpad, Back, Home</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Volume and mute</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">When the TV accepts it over HDMI</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn off</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">When the TV accepts it over HDMI</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn on</th>
+            <td data-label="LG">With a <a href="#coming-soon-settings">TV setting</a></td>
+            <td data-label="Google TV">With a <a href="#coming-soon-settings">TV setting</a></td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">With a <a href="#coming-soon-settings">TV setting</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Play/pause</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Rewind and fast forward</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Channel up and down</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Options menu</th>
+            <td data-label="LG">No</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Keyboard and dictation</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Plain English letters and numbers only</td>
+          </tr>
+          <tr>
+            <th scope="row">Apps</th>
+            <td data-label="LG">The TV's own list</td>
+            <td data-label="Google TV">A short list of popular apps</td>
+            <td data-label="Fire TV">The TV's own list</td>
+            <td data-label="Vizio">A short list of popular apps</td>
+          </tr>
+          <tr>
+            <th scope="row">Inputs</th>
+            <td data-label="LG">Listed by name</td>
+            <td data-label="Google TV">One tile that opens the TV's input menu</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">Listed by name</td>
+          </tr>
+          <tr>
+            <th scope="row">Art mode</th>
+            <td data-label="LG">No</td>
+            <td data-label="Google TV">No</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Now Playing and Lock Screen</th>
+            <td data-label="LG">No</td>
+            <td data-label="Google TV">No</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">No</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="coming-soon-settings">Settings You May Need</h3>
+      <p>Menus vary by model year, and none of these have been confirmed on a TV yet.</p>
+      <ul>
+        <li><strong>LG:</strong> turn on "Turn on via Wi-Fi" so Kendibah can turn the TV on. On most recent models it's under Settings &gt; General &gt; Devices &gt; External Devices &gt; TV On With Mobile.</li>
+        <li><strong>Google TV:</strong> turn on the TV's network standby setting so Kendibah can turn the TV on. It's called Remote start on Sony, Network Standby on TCL and Wake on LAN on Hisense.</li>
+        <li><strong>Fire TV:</strong> keep HDMI-CEC turned on in the television's settings, so volume and power reach it. Your iPhone and the Fire TV must be on the same Wi-Fi network, with no VPN running on the Fire TV.</li>
+        <li><strong>Vizio:</strong> set Power Mode to Quick Start instead of Eco Mode (Menu &gt; System &gt; Power Mode) so Kendibah can turn the TV on.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="contact">4. Still Need Help?</h2>
+      <p>If your question isn't answered here, or your TV's menus don't match this page, let us know.</p>
+      <form class="contact-block support-form" id="support-form" hidden>
+        <label for="tv-brand">TV brand</label>
+        <select id="tv-brand" name="brand">
+          <option value="">Choose one</option>
+          <option>Roku</option>
+          <option>Samsung</option>
+          <option>Fire TV</option>
+          <option>LG</option>
+          <option>Vizio</option>
+          <option>Google TV</option>
+          <option>Sony</option>
+          <option>Other</option>
+        </select>
+
+        <label for="tv-model">TV model <span class="optional">(if you know it)</span></label>
+        <input id="tv-model" name="model" type="text" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
+
+        <label for="tv-problem">What's happening?</label>
+        <textarea id="tv-problem" name="problem" rows="5"></textarea>
+
+        <a class="button" id="support-email" href="#">Write Email</a>
+        <p class="form-note">This opens your email app with these details filled in. Nothing is sent until you press Send.</p>
+      </form>
+      <p class="email-alt">You can also email us at <a href="mailto:hello@xolo.uno">hello@xolo.uno</a>.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Erik Jimenez. Kendibah is an independent app, not affiliated with Roku, Inc., Samsung Electronics, LG Electronics, Google, Amazon, Vizio, Sony, TCL, Hisense or Apple Inc.</p>
+  </footer>
+
+  <script>
+    // Turns the support form into a pre-filled email. Nothing leaves the page: the
+    // link opens the visitor's email app with a draft they can edit or discard.
+    // The address is put together here because Cloudflare's email obfuscation
+    // rewrites addresses it finds in the HTML. Without JavaScript the form stays
+    // hidden and the plain email link below it still works.
+    (function () {
+      var form = document.getElementById('support-form');
+      var link = document.getElementById('support-email');
+      var address = 'hello' + '@' + 'xolo.uno';
+
+      function update() {
+        var brand = form.elements.brand.value;
+        var model = form.elements.model.value.trim();
+        var problem = form.elements.problem.value.trim().replace(/\r?\n/g, '\r\n');
+        var subject = 'Kendibah support' + (brand ? ' (' + brand + ')' : '');
+        var body = problem + '\r\n\r\n' +
+          'TV brand: ' + (brand || 'not chosen') + '\r\n' +
+          'TV model: ' + (model || 'not given') + '\r\n';
+        link.href = 'mailto:' + address +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+      }
+
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      form.addEventListener('submit', function (event) { event.preventDefault(); });
+      update();
+      form.hidden = false;
+    })();
+  </script>
+
+</body>
+</html>

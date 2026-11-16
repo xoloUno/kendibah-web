@@ -1,7 +1,7 @@
 # kendibah-web
 
-The website for [Kendibah](https://kendibah.com): the root page, the privacy policy and the
-terms of service. Static HTML with no build step.
+The website for [Kendibah](https://kendibah.com): the root page, the FAQ, the privacy policy
+and the terms of service. Static HTML with no build step.
 
 ## Hosting
 
@@ -15,12 +15,13 @@ terms of service. Static HTML with no build step.
 
 ## Files
 
-- `index.html`: support and legal links (Contact, Privacy, Terms)
+- `index.html`: support and legal links (FAQ, Contact, Privacy, Terms)
+- `faq.html`: what Kendibah can do on Roku and Samsung TVs, and the TV settings it needs
 - `privacy.html`, `terms.html`: the legal pages
 
 ## Adding the marketing page
 
-The landing page replaces `index.html` in this repo, and its footer carries the Contact,
+The landing page replaces `index.html` in this repo, and its footer carries the FAQ, Contact,
 Privacy and Terms links. If it's built in Kickstart, follow the export-and-patch checklist in
-the archived `xoloUno/flara-web` README, and don't overwrite `privacy.html` or `terms.html`
-with the export's copies.
+the archived `xoloUno/flara-web` README, and don't overwrite `faq.html`, `privacy.html` or
+`terms.html` with the export's copies.
