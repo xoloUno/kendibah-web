@@ -278,6 +278,87 @@
 
     .contact-block p { font-size: 15px; }
 
+    /* Support form: fills in an email draft, see the script at the end of the page. */
+
+    .support-form label {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .optional {
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .support-form select,
+    .support-form input,
+    .support-form textarea {
+      display: block;
+      width: 100%;
+      font: inherit;
+      font-size: 16px; /* 16px or more keeps iOS from zooming in on focus */
+      line-height: 1.5;
+      color: var(--text);
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+    }
+
+    .support-form select {
+      -webkit-appearance: none;
+      appearance: none;
+      padding-right: 36px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236b6760' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+
+    .support-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .support-form select:focus,
+    .support-form input:focus,
+    .support-form textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: -1px;
+      border-color: var(--accent);
+    }
+
+    .support-form .button {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      background: var(--accent);
+      border: 0;
+      border-radius: 6px;
+      padding: 11px 22px;
+    }
+
+    .support-form .button:hover { filter: brightness(0.92); }
+
+    .support-form .button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .support-form .form-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .email-alt {
+      font-size: 15px;
+      margin-top: 16px;
+    }
+
     footer {
       max-width: var(--max);
       margin: 56px auto 0;
@@ -437,7 +518,7 @@
     <section>
       <h2 id="coming-soon">3. Coming Soon: More TV Brands</h2>
       <p>Support for these brands is in development and hasn't been tested on real TVs yet, so details may change before release.</p>
-      <p>Sony BRAVIA TVs run Google TV and are expected to work like the Google TV column.</p>
+      <p>Recent Sony BRAVIA TVs run Google TV and are expected to work like the Google TV column.</p>
 
       <table class="features features-wide">
         <thead>
@@ -563,11 +644,26 @@
 
     <section>
       <h2 id="contact">4. Still Need Help?</h2>
-      <p>If your question isn't answered here, or your TV's menus don't match this page, contact us:</p>
-      <div class="contact-block">
-        <p><strong>Erik Jimenez</strong><br>
-        <a href="mailto:hello@xolo.uno">hello@xolo.uno</a></p>
-      </div>
+      <p>If your question isn't answered here, or your TV's menus don't match this page, let us know.</p>
+      <form class="contact-block support-form" id="support-form" hidden>
+        <label for="tv-brand">TV brand</label>
+        <select id="tv-brand" name="brand">
+          <option value="">Choose one</option>
+          <option>Roku</option>
+          <option>Samsung</option>
+          <option>Other</option>
+        </select>
+
+        <label for="tv-model">TV model <span class="optional">(if you know it)</span></label>
+        <input id="tv-model" name="model" type="text" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
+
+        <label for="tv-problem">What's happening?</label>
+        <textarea id="tv-problem" name="problem" rows="5"></textarea>
+
+        <a class="button" id="support-email" href="#">Write Email</a>
+        <p class="form-note">This opens your email app with these details filled in. Nothing is sent until you press Send.</p>
+      </form>
+      <p class="email-alt">You can also email us at <a href="mailto:hello@xolo.uno">hello@xolo.uno</a>.</p>
     </section>
 
   </main>
@@ -575,6 +671,38 @@
   <footer>
     <p>© 2026 Erik Jimenez. Kendibah is an independent app, not affiliated with Roku, Inc., Samsung Electronics, LG Electronics, Google, Amazon, Vizio, Sony, TCL, Hisense or Apple Inc.</p>
   </footer>
+
+  <script>
+    // Turns the support form into a pre-filled email. Nothing leaves the page: the
+    // link opens the visitor's email app with a draft they can edit or discard.
+    // The address is put together here because Cloudflare's email obfuscation
+    // rewrites addresses it finds in the HTML. Without JavaScript the form stays
+    // hidden and the plain email link below it still works.
+    (function () {
+      var form = document.getElementById('support-form');
+      var link = document.getElementById('support-email');
+      var address = 'hello' + '@' + 'xolo.uno';
+
+      function update() {
+        var brand = form.elements.brand.value;
+        var model = form.elements.model.value.trim();
+        var problem = form.elements.problem.value.trim().replace(/\r?\n/g, '\r\n');
+        var subject = 'Kendibah support' + (brand ? ' (' + brand + ')' : '');
+        var body = problem + '\r\n\r\n' +
+          'TV brand: ' + (brand || 'not chosen') + '\r\n' +
+          'TV model: ' + (model || 'not given') + '\r\n';
+        link.href = 'mailto:' + address +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+      }
+
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      form.addEventListener('submit', function (event) { event.preventDefault(); });
+      update();
+      form.hidden = false;
+    })();
+  </script>
 
 </body>
 </html>
