@@ -137,6 +137,8 @@
       font-size: 15px;
     }
 
+    ul li strong { font-weight: 500; }
+
     ul li::before {
       content: '—';
       position: absolute;
@@ -193,6 +195,16 @@
       font-weight: 500;
     }
 
+    /* The coming-soon table has four brand columns, so it is tighter on wide screens. */
+    @media (min-width: 601px) {
+      .features-wide { font-size: 14px; }
+
+      .features-wide th,
+      .features-wide td { padding: 10px 12px; }
+
+      .features-wide tbody th { width: 22%; }
+    }
+
     @media (max-width: 600px) {
       .features,
       .features tbody,
@@ -238,6 +250,8 @@
         left: 0;
         color: var(--muted);
       }
+
+      .features-wide td { padding-left: 6.5em; }
     }
 
     .setting {
@@ -428,7 +442,134 @@
     </section>
 
     <section>
-      <h2 id="contact">3. Still Need Help?</h2>
+      <h2 id="coming-soon">3. Coming Soon: More TV Brands</h2>
+      <p>Support for these brands is in development and hasn't been tested on real TVs yet, so details may change before release.</p>
+      <p>Sony BRAVIA TVs run Google TV and are expected to work like the Google TV column.</p>
+
+      <table class="features features-wide">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">LG</th>
+            <th scope="col">Google TV</th>
+            <th scope="col">Fire TV</th>
+            <th scope="col">Vizio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pairing</th>
+            <td data-label="LG">Choose Allow on the TV</td>
+            <td data-label="Google TV">Type the code the TV shows</td>
+            <td data-label="Fire TV">Type the PIN the TV shows</td>
+            <td data-label="Vizio">Type the PIN the TV shows</td>
+          </tr>
+          <tr>
+            <th scope="row">Trackpad, Back, Home</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Volume and mute</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">When the TV accepts it over HDMI</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn off</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">When the TV accepts it over HDMI</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn on</th>
+            <td data-label="LG">With a <a href="#coming-soon-settings">TV setting</a></td>
+            <td data-label="Google TV">With a <a href="#coming-soon-settings">TV setting</a></td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">With a <a href="#coming-soon-settings">TV setting</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Play/pause</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Rewind and fast forward</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Channel up and down</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Options menu</th>
+            <td data-label="LG">No</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Keyboard and dictation</th>
+            <td data-label="LG">Yes</td>
+            <td data-label="Google TV">Yes</td>
+            <td data-label="Fire TV">Yes</td>
+            <td data-label="Vizio">Plain English letters and numbers only</td>
+          </tr>
+          <tr>
+            <th scope="row">Apps</th>
+            <td data-label="LG">The TV's own list</td>
+            <td data-label="Google TV">A short list of popular apps</td>
+            <td data-label="Fire TV">The TV's own list</td>
+            <td data-label="Vizio">A short list of popular apps</td>
+          </tr>
+          <tr>
+            <th scope="row">Inputs</th>
+            <td data-label="LG">Listed by name</td>
+            <td data-label="Google TV">One tile that opens the TV's input menu</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">Listed by name</td>
+          </tr>
+          <tr>
+            <th scope="row">Art mode</th>
+            <td data-label="LG">No</td>
+            <td data-label="Google TV">No</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Now Playing and Lock Screen</th>
+            <td data-label="LG">No</td>
+            <td data-label="Google TV">No</td>
+            <td data-label="Fire TV">No</td>
+            <td data-label="Vizio">No</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="coming-soon-settings">Settings You May Need</h3>
+      <p>Menus vary by model year, and none of these have been confirmed on a TV yet.</p>
+      <ul>
+        <li><strong>LG:</strong> turn on "Turn on via Wi-Fi" so Kendibah can turn the TV on. On most recent models it's under Settings &gt; General &gt; Devices &gt; External Devices &gt; TV On With Mobile.</li>
+        <li><strong>Google TV:</strong> turn on the TV's network standby setting so Kendibah can turn the TV on. It's called Remote start on Sony, Network Standby on TCL and Wake on LAN on Hisense.</li>
+        <li><strong>Fire TV:</strong> keep HDMI-CEC turned on in the television's settings, so volume and power reach it. Your iPhone and the Fire TV must be on the same Wi-Fi network, with no VPN running on the Fire TV.</li>
+        <li><strong>Vizio:</strong> set Power Mode to Quick Start instead of Eco Mode (Menu &gt; System &gt; Power Mode) so Kendibah can turn the TV on.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="contact">4. Still Need Help?</h2>
       <p>If your question isn't answered here, or your TV's menus don't match this page, contact us:</p>
       <div class="contact-block">
         <p><strong>Erik Jimenez</strong><br>
@@ -439,7 +580,7 @@
   </main>
 
   <footer>
-    <p>© 2026 Erik Jimenez. Kendibah is an independent app, not affiliated with Roku, Inc., Samsung Electronics or Apple Inc.</p>
+    <p>© 2026 Erik Jimenez. Kendibah is an independent app, not affiliated with Roku, Inc., Samsung Electronics, LG Electronics, Google, Amazon, Vizio, Sony, TCL, Hisense or Apple Inc.</p>
   </footer>
 
 </body>
