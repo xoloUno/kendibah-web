@@ -188,7 +188,7 @@
       font-weight: 500;
     }
 
-    /* The coming-soon table has four brand columns, so it is tighter on wide screens. */
+    /* The other-brands table has four brand columns, so it is tighter on wide screens. */
     @media (min-width: 601px) {
       .features-wide { font-size: 14px; }
 
@@ -436,8 +436,8 @@
             <td data-label="Samsung">No</td>
           </tr>
           <tr>
-            <th scope="row">Options menu</th>
-            <td data-label="Roku">Yes</td>
+            <th scope="row">Options key</th>
+            <td data-label="Roku">Yes, ✱ Options</td>
             <td data-label="Samsung">No</td>
           </tr>
           <tr>
@@ -517,8 +517,8 @@
     </section>
 
     <section>
-      <h2 id="coming-soon">3. Coming Soon: More TV Brands</h2>
-      <p>Support for these brands is in development and hasn't been tested on real TVs yet, so details may change before release.</p>
+      <h2 id="other-brands">3. Other TV Brands</h2>
+      <p>Kendibah also connects to LG, Google TV, Fire TV and Vizio TVs. Support for them was built and tested on emulators but hasn't been tried on real TVs yet, so some features may not work as described here. If yours gives you trouble, please <a href="https://testflight.apple.com/join/XKceNbn1">join the TestFlight beta</a> and leave feedback.</p>
       <p>Recent Sony BRAVIA TVs run Google TV and are expected to work like the Google TV column.</p>
 
       <table class="features features-wide">
@@ -562,10 +562,10 @@
           </tr>
           <tr>
             <th scope="row">Turn on</th>
-            <td data-label="LG">With a <a href="#coming-soon-settings">TV setting</a></td>
-            <td data-label="Google TV">With a <a href="#coming-soon-settings">TV setting</a></td>
+            <td data-label="LG">With a <a href="#other-brands-settings">TV setting</a></td>
+            <td data-label="Google TV">With a <a href="#other-brands-settings">TV setting</a></td>
             <td data-label="Fire TV">When the TV accepts it over HDMI</td>
-            <td data-label="Vizio">With a <a href="#coming-soon-settings">TV setting</a></td>
+            <td data-label="Vizio">With a <a href="#other-brands-settings">TV setting</a></td>
           </tr>
           <tr>
             <th scope="row">Play/pause</th>
@@ -589,10 +589,10 @@
             <td data-label="Vizio">Yes</td>
           </tr>
           <tr>
-            <th scope="row">Options menu</th>
+            <th scope="row">Options key</th>
             <td data-label="LG">No</td>
             <td data-label="Google TV">No</td>
-            <td data-label="Fire TV">Yes</td>
+            <td data-label="Fire TV">Yes, ☰ Menu</td>
             <td data-label="Vizio">No</td>
           </tr>
           <tr>
@@ -633,12 +633,16 @@
         </tbody>
       </table>
 
-      <h3 id="coming-soon-settings">Settings You May Need</h3>
+      <ul>
+        <li>LG and Vizio TVs have separate Play and Pause keys and no single Play/Pause. On an LG, Kendibah asks the TV what's playing and sends the right one. On a Vizio, it alternates between them, so after you pause with the TV's own remote, the first press in Kendibah may do nothing.</li>
+      </ul>
+
+      <h3 id="other-brands-settings">Settings You May Need</h3>
       <p>Menus vary by model year, and none of these have been confirmed on a TV yet.</p>
       <ul>
-        <li><strong>LG:</strong> turn on "Turn on via Wi-Fi" so Kendibah can turn the TV on. On 2021 to 2024 models it's under Settings &gt; General &gt; Devices &gt; External Devices &gt; TV On With Mobile, and on 2025 and later models under Settings &gt; Support &gt; IP control settings &gt; Wake on LAN. On 2021 and earlier models, also turn on Quick Start+, which helps the TV answer Kendibah while it's off.</li>
+        <li><strong>LG:</strong> turn on "Turn on via Wi-Fi" so Kendibah can turn the TV on. On 2020 models it's under Settings &gt; Connection &gt; Mobile Connection Management &gt; TV On With Mobile, on 2021 to 2024 models under Settings &gt; General &gt; Devices &gt; External Devices &gt; TV On With Mobile, and on 2025 and later models under Settings &gt; Support &gt; IP control settings &gt; Wake on LAN. On 2021 and earlier models, also turn on Quick Start+, which helps the TV answer Kendibah while it's off. If an older LG refuses to pair, turn on LG Connect Apps in its network settings.</li>
         <li><strong>Google TV:</strong> turn on the TV's network standby setting so Kendibah can turn the TV on. It's called Remote start on Sony, Network Standby on TCL and Wake on LAN on Hisense.</li>
-        <li><strong>Fire TV:</strong> keep HDMI-CEC turned on in the television's settings, so volume and power reach it. Your iPhone and the Fire TV must be on the same Wi-Fi network, with no VPN running on the Fire TV.</li>
+        <li><strong>Fire TV:</strong> keep HDMI-CEC turned on in the television's settings, and HDMI CEC Device Control on the Fire TV, so volume and power reach the television. Your iPhone and the Fire TV must be on the same Wi-Fi network, with no VPN running on the Fire TV.</li>
         <li><strong>Vizio:</strong> set Power Mode to Quick Start instead of Eco Mode (Menu &gt; System &gt; Power Mode) so Kendibah can turn the TV on. Kendibah can't check this setting for you, so if it can't turn the TV on, look here first.</li>
       </ul>
     </section>
