@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Kendibah</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1a1917;
+      --muted: #6b6760;
+      --accent: #2b6cb0;
+      --border: #e8e5e0;
+      --max: 680px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 0 24px 80px;
+    }
+
+    header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .app-name {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .summary-box p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .summary-box p:last-child { margin-bottom: 0; }
+
+    .summary-box strong {
+      font-weight: 500;
+    }
+
+    section {
+      margin-bottom: 44px;
+    }
+
+    h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 28px 0 12px;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    h2, h3, .setting { scroll-margin-top: 16px; }
+
+    p {
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0;
+    }
+
+    ul li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover { border-bottom-color: var(--accent); }
+
+    /* Feature table: a plain table on wide screens, one block per feature on phones. */
+
+    .features {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 20px 0;
+    }
+
+    .features th,
+    .features td {
+      text-align: left;
+      vertical-align: top;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features tbody tr:last-child th,
+    .features tbody tr:last-child td { border-bottom: 0; }
+
+    .features thead th {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .features tbody th {
+      width: 34%;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .features,
+      .features tbody,
+      .features tr,
+      .features th,
+      .features td { display: block; }
+
+      .features thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      .features tr {
+        padding: 12px 18px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .features tbody tr:last-child { border-bottom: 0; }
+
+      .features th,
+      .features td {
+        border-bottom: 0;
+        padding: 0;
+      }
+
+      .features tbody th {
+        width: auto;
+        margin-bottom: 4px;
+      }
+
+      .features td {
+        position: relative;
+        padding: 2px 0 2px 5.5em;
+      }
+
+      .features td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        color: var(--muted);
+      }
+    }
+
+    .setting {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+
+    .setting p { font-size: 15px; margin-bottom: 8px; }
+
+    .setting p:last-child { margin-bottom: 0; }
+
+    .path {
+      color: var(--muted);
+    }
+
+    .path strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .contact-block p { font-size: 15px; }
+
+    footer {
+      max-width: var(--max);
+      margin: 56px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="app-name">Kendibah</div>
+    <h1>Frequently Asked Questions</h1>
+    <p class="meta">For Roku and Samsung TVs &nbsp;·&nbsp; Last updated: November 16, 2026</p>
+  </header>
+
+  <main>
+
+    <div class="summary-box">
+      <p><strong>The short version:</strong> Kendibah works with Roku and Samsung TVs on your Wi-Fi network. Most remote features work on both. A few depend on what the TV supports, and some need a setting turned on in the TV first.</p>
+    </div>
+
+    <section>
+      <h2 id="features">1. What Kendibah Can Do on Each TV</h2>
+
+      <table class="features">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Roku</th>
+            <th scope="col">Samsung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pairing</th>
+            <td data-label="Roku">None needed</td>
+            <td data-label="Samsung">Choose Allow on the TV</td>
+          </tr>
+          <tr>
+            <th scope="row">Trackpad, Back, Home</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Volume and mute</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn off</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Turn on</th>
+            <td data-label="Roku">Yes, with a <a href="#roku-fast-tv-start">TV setting</a></td>
+            <td data-label="Samsung">Yes, with a <a href="#samsung-power-on">TV setting</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Play/pause</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">Yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Rewind and fast forward</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Channel up and down</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Options menu</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+          <tr>
+            <th scope="row">Keyboard and dictation</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">In Samsung's own keyboard only</td>
+          </tr>
+          <tr>
+            <th scope="row">Apps</th>
+            <td data-label="Roku">The TV's own list, with artwork</td>
+            <td data-label="Samsung">Installed apps from a known set, no artwork</td>
+          </tr>
+          <tr>
+            <th scope="row">Inputs</th>
+            <td data-label="Roku">Listed by name</td>
+            <td data-label="Samsung">One tile that opens the TV's input menu</td>
+          </tr>
+          <tr>
+            <th scope="row">Art mode</th>
+            <td data-label="Roku">Backdrops (experimental)</td>
+            <td data-label="Samsung">Yes, on The Frame</td>
+          </tr>
+          <tr>
+            <th scope="row">Now Playing and Lock Screen</th>
+            <td data-label="Roku">Yes</td>
+            <td data-label="Samsung">No</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul>
+        <li>On Samsung TVs, what you type or dictate goes to Samsung's own on-screen keyboard. Apps that draw their own keyboard, such as YouTube and the Apple TV app, don't receive it.</li>
+        <li>Now Playing needs the TV to report what's playing. Only Roku does, so Now Playing and the Lock Screen controls work with Roku only.</li>
+        <li>Your iPhone's volume buttons control the TV only while Kendibah is open on screen.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="settings">2. TV Settings You May Need to Turn On</h2>
+      <p>Some features need a setting turned on in the TV. Menu names and paths change between models and software versions, so the paths below are the ones on most models, not all. If yours look different, look for a setting with the same or a similar name.</p>
+
+      <h3 id="roku">Roku</h3>
+
+      <div class="setting" id="roku-control-by-mobile-apps">
+        <h4>Control by mobile apps</h4>
+        <p class="path"><strong>Settings &gt; System &gt; Advanced system settings &gt; Control by mobile apps</strong></p>
+        <p>Choose the option that lets mobile apps control the TV. The names of the choices depend on your Roku's software version, and an option that limits or turns off control will block Kendibah. Without this setting, the Roku refuses the remote's keys and the app list. Kendibah tells you when a Roku is blocking it.</p>
+      </div>
+
+      <div class="setting" id="roku-fast-tv-start">
+        <h4>Fast TV Start</h4>
+        <p class="path"><strong>Settings &gt; System &gt; Power</strong></p>
+        <p>Helps the TV answer Kendibah while it's off, so Power can turn it on.</p>
+      </div>
+
+      <h3 id="samsung">Samsung</h3>
+
+      <div class="setting" id="samsung-power-on">
+        <h4>Power On with Mobile</h4>
+        <p class="path">On most models: <strong>Settings &gt; All Settings &gt; Connection &gt; Network &gt; Expert Settings</strong></p>
+        <p class="path">On 2021 and earlier models: <strong>Settings &gt; General &gt; Network &gt; Expert Settings</strong></p>
+        <p>Lets your iPhone turn the TV on.</p>
+      </div>
+
+      <div class="setting" id="samsung-ip-remote">
+        <h4>IP Remote</h4>
+        <p class="path">In the same Expert Settings menu as Power On with Mobile.</p>
+        <p>Some TVs need this turned on before they accept a remote over the network.</p>
+      </div>
+
+      <div class="setting" id="samsung-denied">
+        <h4>If you chose Deny by mistake</h4>
+        <p class="path">On most models: <strong>Settings &gt; General &gt; External Device Manager &gt; Device Connection Manager &gt; Device List</strong></p>
+        <p>Remove Kendibah from the list, then pair the TV again in Kendibah and choose Allow.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="contact">3. Still Need Help?</h2>
+      <p>If your question isn't answered here, or your TV's menus don't match this page, contact us:</p>
+      <div class="contact-block">
+        <p><strong>Erik Jimenez</strong><br>
+        <a href="mailto:hello@xolo.uno">hello@xolo.uno</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Erik Jimenez. Kendibah is an independent app, not affiliated with Roku, Inc., Samsung Electronics or Apple Inc.</p>
+  </footer>
+
+</body>
+</html>
