@@ -43,11 +43,9 @@
       }
     }
 
-    html { scroll-behavior: smooth; }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-    }
+    /* No scroll-behavior: smooth on the root. Safari applies it to the scroll position it
+       restores on Back, and the finger lifting off an edge swipe stops that animation at the
+       top of the page. */
 
     body {
       background: var(--bg);
