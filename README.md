@@ -1,6 +1,6 @@
 # kendibah-web
 
-The website for [Kendibah](https://kendibah.com): the root page, the FAQ, the privacy policy
+The website for [Kendibah](https://kendibah.com): the marketing page, the FAQ, the privacy policy
 and the terms of service. Static HTML with no build step.
 
 ## Hosting
@@ -15,13 +15,17 @@ and the terms of service. Static HTML with no build step.
 
 ## Files
 
-- `index.html`: support and legal links (FAQ, Contact, Privacy, Terms)
+- `index.html`: the marketing page, with the App Store badge and a Support section (FAQ,
+  Contact, Privacy, Terms)
 - `faq.html`: what Kendibah can do on Roku and Samsung TVs, and the TV settings it needs
 - `privacy.html`, `terms.html`: the legal pages
+- `images/`: web copies of the approved App Store screenshots (the framed captures, trimmed and
+  saved as WebP), the app icon rendered from `KendibahApp/AppIcon.icon` with Icon Composer's
+  `ictool`, and `og.png` for link previews
 
-## Adding the marketing page
+The App Store badge loads from Apple's marketing tools
+(`toolbox.marketingtools.apple.com`). The page advertises Roku and Samsung only; the other
+brands appear in the FAQ and the footer's trademark line.
 
-The landing page replaces `index.html` in this repo, and its footer carries the FAQ, Contact,
-Privacy and Terms links. If it's built in Kickstart, follow the export-and-patch checklist in
-the archived `xoloUno/flara-web` README, and don't overwrite `faq.html`, `privacy.html` or
-`terms.html` with the export's copies.
+Don't add `apple-itunes-app` (Smart App Banner) or `theme-color` tags to the home page: with
+them, swiping back to it in Safari on iPhone scrolled it to the top (tested 2026-11-16).
