@@ -3,92 +3,676 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kendibah — Support &amp; Legal</title>
+  <title>Kendibah — A clean remote app for your smart TV</title>
+  <meta name="description" content="Kendibah is a remote for your Roku or Samsung TV, made to feel at home on iPhone and iPhone Duo. A trackpad, your keyboard and Control Center. Try it free for 7 days, then buy it once. No subscription." />
+  <meta name="apple-itunes-app" content="app-id=6827920208" />
+  <meta name="theme-color" content="#0A5BB5" />
+  <link rel="icon" type="image/png" href="images/favicon-64.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kendibah.com/" />
+  <meta property="og:title" content="Kendibah — A clean remote app for your smart TV" />
+  <meta property="og:description" content="A remote for your Roku or Samsung TV, made to feel at home on iPhone and iPhone Duo. Try it free for 7 days, then buy it once." />
+  <meta property="og:image" content="https://kendibah.com/images/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      --cobalt: #0A5BB5;
+      --cobalt-deep: #031B3D;
       --bg: #faf9f7;
+      --surface: #ffffff;
       --text: #1a1917;
       --muted: #6b6760;
-      --accent: #2b6cb0;
+      --accent: #0A5BB5;
       --border: #e8e5e0;
+      --chocolate: #7a4321;
+      --max: 1080px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1013;
+        --surface: #171a1f;
+        --text: #f3f2f0;
+        --muted: #a29e97;
+        --accent: #6aa8ff;
+        --border: #2a2d33;
+        --chocolate: #d39a6a;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 400px;
-      text-align: center;
+    img { display: block; max-width: 100%; height: auto; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    a:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+      border-radius: 4px;
     }
 
-    .app-name {
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    h1, h2, h3 {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .eyebrow {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--chocolate);
       margin-bottom: 12px;
     }
 
-    h1 {
-      font-size: 28px;
+    .badge {
+      display: inline-block;
+      line-height: 0;
+      border-radius: 9px;
+    }
+
+    .badge:hover { text-decoration: none; }
+
+    .badge img { height: 54px; width: auto; }
+
+    /* Hero: the App Store screenshots' cobalt, the color of the icon's wrapper. */
+
+    .hero {
+      color: #ffffff;
+      background:
+        radial-gradient(900px 520px at 78% 8%, rgba(255, 255, 255, 0.14), transparent 62%),
+        linear-gradient(180deg, var(--cobalt) 0%, var(--cobalt-deep) 100%);
+      overflow: hidden;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
       font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .brand:hover { text-decoration: none; }
+
+    .brand img { width: 34px; height: 34px; }
+
+    .nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      font-size: 15px;
+    }
+
+    .nav ul a { color: rgba(255, 255, 255, 0.86); }
+    .nav ul a:hover { color: #ffffff; }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      padding-top: 40px;
+    }
+
+    .hero .eyebrow { color: rgba(255, 255, 255, 0.72); }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .lede {
+      font-size: 19px;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 30em;
       margin-bottom: 32px;
     }
 
-    .links {
-      list-style: none;
-      padding: 0;
+    .cta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px 20px;
+      padding-bottom: 72px;
     }
 
-    .links li {
+    .cta-note {
+      font-size: 15px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .hero-art {
+      position: relative;
+      justify-self: center;
+      width: min(100%, 420px);
+      aspect-ratio: 420 / 560;
+      align-self: end;
+    }
+
+    .hero-art img {
+      position: absolute;
+      width: 62%;
+      filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
+    }
+
+    .hero-art .back { right: 0; top: 0; width: 54%; opacity: 0.96; }
+    .hero-art .front { left: 0; top: 9%; }
+
+    /* Feature rows */
+
+    .features { padding: 96px 0 40px; }
+
+    .section-intro {
+      text-align: center;
+      max-width: 36em;
+      margin: 0 auto 72px;
+    }
+
+    .section-intro h2 {
+      font-size: clamp(30px, 4.4vw, 44px);
+      font-weight: 700;
       margin-bottom: 16px;
     }
 
-    .links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 500;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s;
+    .section-intro p { color: var(--muted); }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 56px;
+      margin-bottom: 96px;
     }
 
-    .links a:hover { border-bottom-color: var(--accent); }
+    .row.flip .row-art { order: -1; }
+
+    .row h3 {
+      font-size: clamp(26px, 3.4vw, 36px);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .row p { color: var(--muted); max-width: 26em; }
+
+    .row-art {
+      justify-self: center;
+      width: min(100%, 300px);
+      filter: drop-shadow(0 22px 36px rgba(3, 27, 61, 0.22));
+    }
+
+    /* iPhone Duo band */
+
+    .duo {
+      color: #ffffff;
+      background: linear-gradient(180deg, var(--cobalt-deep) 0%, #06264f 100%);
+      padding: 96px 0;
+    }
+
+    .duo .section-intro p { color: rgba(255, 255, 255, 0.8); }
+    .duo .eyebrow { color: rgba(255, 255, 255, 0.72); }
+
+    .duo-shots {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: end;
+    }
+
+    .duo-shots figure { min-width: 0; }
+
+    .duo-shots figure img {
+      filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5));
+      margin: 0 auto;
+    }
+
+    .duo-shots figure:last-child img { width: min(100%, 400px); }
+
+    .duo-shots figcaption {
+      text-align: center;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.78);
+      margin-top: 20px;
+    }
+
+    /* More features */
+
+    .more { padding: 96px 0 24px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 24px 26px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .card p { font-size: 15px; color: var(--muted); }
+
+    .works-with {
+      text-align: center;
+      padding: 56px 0 96px;
+    }
+
+    .works-with h2 {
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .works-with p { color: var(--muted); }
+
+    /* Purchase and privacy */
+
+    .promises {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding-bottom: 96px;
+    }
+
+    .promise {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px 36px 38px;
+    }
+
+    .promise h2 {
+      font-size: clamp(24px, 3vw, 30px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .promise p { color: var(--muted); }
+    .promise p + p { margin-top: 12px; }
+
+    /* Closing call to action */
+
+    .closing {
+      color: #ffffff;
+      text-align: center;
+      background:
+        radial-gradient(700px 360px at 50% 0%, rgba(255, 255, 255, 0.14), transparent 65%),
+        linear-gradient(180deg, var(--cobalt) 0%, var(--cobalt-deep) 100%);
+      padding: 88px 0 92px;
+    }
+
+    .closing img.icon {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 24px;
+      filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.35));
+    }
+
+    .closing h2 {
+      font-size: clamp(32px, 4.6vw, 46px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .closing p {
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 28px;
+    }
+
+    .closing .requires {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.66);
+      margin: 18px 0 0;
+    }
+
+    /* Support: kendibah.com is the App Store support URL, so a contact link must stay here. */
+
+    .support { padding: 88px 0 24px; }
+
+    .support h2 {
+      font-size: clamp(26px, 3.4vw, 34px);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .support > .wrap > p { color: var(--muted); margin-bottom: 28px; }
+
+    .support-links {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      list-style: none;
+    }
+
+    .support-links a {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-weight: 500;
+    }
+
+    .support-links a:hover {
+      text-decoration: none;
+      border-color: var(--accent);
+    }
+
+    .support-links span {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
     footer {
-      margin-top: 48px;
+      max-width: var(--max);
+      margin: 56px auto 0;
+      padding: 24px 24px 48px;
+      border-top: 1px solid var(--border);
       font-size: 13px;
+      line-height: 1.6;
       color: var(--muted);
+    }
+
+    footer p + p { margin-top: 8px; }
+
+    /* Tablets and phones */
+
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 36px;
+        gap: 0;
+      }
+
+      .lede { margin-left: auto; margin-right: auto; }
+
+      .cta {
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 40px;
+      }
+
+      .hero-art { width: min(100%, 340px); }
+
+      .row {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+        margin-bottom: 72px;
+      }
+
+      .row.flip .row-art { order: 0; }
+
+      .row p { margin: 0 auto; }
+
+      .row-art { width: min(64vw, 260px); }
+
+      .duo-shots { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+
+      .cards { grid-template-columns: 1fr 1fr; }
+
+      .promises { grid-template-columns: 1fr; }
+
+      .support-links { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+
+      .wrap { padding-left: 16px; padding-right: 16px; }
+
+      .nav ul { gap: 16px; font-size: 14px; }
+
+      .nav ul .optional { display: none; }
+
+      .lede { font-size: 17px; }
+
+      .features, .more, .duo, .support { padding-top: 72px; }
+
+      .duo { padding-bottom: 72px; }
+
+      .section-intro { margin-bottom: 56px; }
+
+      .cards { grid-template-columns: 1fr; }
+
+      .promise { padding: 28px 24px 30px; }
+
+      .support-links { grid-template-columns: 1fr; }
+
+      footer { padding-left: 16px; padding-right: 16px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="app-name">Kendibah</div>
-    <h1>Support &amp; Legal</h1>
-    <ul class="links">
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="mailto:hello@xolo.uno">Contact Support</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="terms.html">Terms of Service</a></li>
-    </ul>
-    <footer>
-      <p>Kendibah is not affiliated with Roku, Samsung, Google, Amazon, LG or VIZIO. Roku is a trademark of Roku, Inc. Samsung and The Frame are trademarks of Samsung Electronics Co., Ltd. Google TV and Android TV are trademarks of Google LLC. Amazon and Fire TV are trademarks of Amazon.com, Inc. or its affiliates. LG and webOS are trademarks of LG Electronics Inc. VIZIO and SmartCast are trademarks of VIZIO, Inc.</p>
-      <p>&copy; 2026 Erik Jimenez</p>
-    </footer>
-  </div>
+
+  <header class="hero">
+    <nav class="nav wrap" aria-label="Main">
+      <a class="brand" href="./">
+        <img src="images/icon-256.png" alt="" width="34" height="34" />
+        Kendibah
+      </a>
+      <ul>
+        <li class="optional"><a href="#features">Features</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="#support">Support</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-inner wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">For Roku and Samsung TVs</p>
+        <h1>A clean remote app for your smart TV.</h1>
+        <p class="lede">Kendibah is a remote for the TV you already own, made to feel at home on iPhone. It opens straight to the TV you used last and works over your Wi-Fi, with no account.</p>
+        <div class="cta">
+          <a class="badge" href="https://apps.apple.com/app/id6827920208">
+            <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" width="162" height="54" />
+          </a>
+          <p class="cta-note">Free for 7 days, then buy it once.<br />No subscription.</p>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img class="back" src="images/apps-inputs.webp" alt="" width="720" height="1492" />
+        <img class="front" src="images/remote.webp" alt="Kendibah's remote on iPhone: a trackpad with volume, Back, Home and Play/Pause" width="720" height="1492" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-intro">
+          <p class="eyebrow">The remote</p>
+          <h2>Everything your remote does, on the phone in your hand.</h2>
+          <p>Swipe on a trackpad to move around and tap to select, with Back, Home, Play/Pause, Mute and Power always in reach.</p>
+        </div>
+
+        <div class="row">
+          <div>
+            <h3>Your apps and inputs, one tap away.</h3>
+            <p>Your TV's apps and inputs sit in one panel, in the order you choose. Give your inputs your own names, like "PlayStation" instead of "HDMI 2".</p>
+          </div>
+          <img class="row-art" src="images/apps-inputs.webp" alt="The Apps and Inputs panel in Kendibah, with app tiles and inputs" width="720" height="1492" loading="lazy" />
+        </div>
+
+        <div class="row flip">
+          <div>
+            <h3>A whole remote on your Home Screen.</h3>
+            <p>Add the Kendibah widget and control your TV without opening the app.</p>
+          </div>
+          <img class="row-art" src="images/widget.webp" alt="The Kendibah widget on the iPhone Home Screen, with a direction pad and remote buttons" width="720" height="1492" loading="lazy" />
+        </div>
+
+        <div class="row">
+          <div>
+            <h3>Build a remote in Control Center.</h3>
+            <p>Add buttons to open the remote, play or pause, mute and power. After you use the remote, its buttons stay on the Lock Screen for a few minutes.</p>
+          </div>
+          <img class="row-art" src="images/control-center.webp" alt="Kendibah's buttons arranged as a remote in Control Center" width="720" height="1492" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="duo" id="iphone-duo">
+      <div class="wrap">
+        <div class="section-intro">
+          <p class="eyebrow">iPhone Duo</p>
+          <h2>Made for iPhone and iPhone Duo.</h2>
+          <p>Open it, and your TV's apps and inputs sit on one side of the fold, with the remote on the other. Set it down like a laptop, and the remote rests on the lower half.</p>
+        </div>
+        <div class="duo-shots">
+          <figure>
+            <img src="images/duo-book.webp" alt="Kendibah on an open iPhone Duo: apps on the left, the remote on the right" width="1200" height="860" loading="lazy" />
+            <figcaption>Apps right beside your remote</figcaption>
+          </figure>
+          <figure>
+            <img src="images/duo-laptop.webp" alt="Kendibah on an iPhone Duo set down like a laptop, with the trackpad on the lower half" width="1200" height="1202" loading="lazy" />
+            <figcaption>The remote on the lower half</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="more">
+      <div class="wrap">
+        <div class="section-intro">
+          <p class="eyebrow">And more</p>
+          <h2>The little things, done right.</h2>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>Type and dictate</h3>
+            <p>Search on your TV with your iPhone's keyboard, or just say it.</p>
+          </div>
+          <div class="card">
+            <h3>Turn your TV on</h3>
+            <p>Wake your TV from Kendibah. Some TVs need a <a href="faq.html#settings">setting</a> turned on first.</p>
+          </div>
+          <div class="card">
+            <h3>Shortcuts and Siri</h3>
+            <p>Mute the TV, open an app on a TV you name, or show its art.</p>
+          </div>
+          <div class="card">
+            <h3>Art Mode on The Frame</h3>
+            <p>Switch a Samsung Frame to its art from your iPhone.</p>
+          </div>
+          <div class="card">
+            <h3>Now Playing on Roku</h3>
+            <p>See what's playing on the Lock Screen, and use your iPhone's volume buttons while Kendibah is open.</p>
+          </div>
+          <div class="card">
+            <h3>Straight to your TV</h3>
+            <p>Kendibah opens to the TV you used last, so the remote is ready when you are.</p>
+          </div>
+        </div>
+
+        <div class="works-with">
+          <h2>Made for Roku TVs and Samsung TVs, including The Frame.</h2>
+          <p><a href="faq.html#features">See what Kendibah can do on each TV &rarr;</a></p>
+        </div>
+
+        <div class="promises">
+          <div class="promise">
+            <p class="eyebrow">One purchase</p>
+            <h2>Buy it once. That's it.</h2>
+            <p>Try every feature free for 7 days. To keep controlling your TV after that, buy Kendibah Lifetime once.</p>
+            <p>The trial never turns into a purchase by itself, and there's no subscription. Finding and setting up TVs is always free.</p>
+          </div>
+          <div class="promise">
+            <p class="eyebrow">Privacy</p>
+            <h2>Your TV, your Wi-Fi, nobody else.</h2>
+            <p>Kendibah talks to your TVs directly over your Wi-Fi. No account, no ads, no analytics.</p>
+            <p><a href="privacy.html">Read the privacy policy &rarr;</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <img class="icon" src="images/icon-256.png" alt="" width="112" height="112" loading="lazy" />
+        <h2>Get Kendibah.</h2>
+        <p>Free for 7 days, then buy it once.</p>
+        <a class="badge" href="https://apps.apple.com/app/id6827920208">
+          <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" width="162" height="54" loading="lazy" />
+        </a>
+        <p class="requires">Requires iOS 27 or later.</p>
+      </div>
+    </section>
+
+    <section class="support" id="support">
+      <div class="wrap">
+        <h2>Support</h2>
+        <p>Questions about your TV, or something not working? Start with the FAQ, or write to us.</p>
+        <ul class="support-links">
+          <li><a href="faq.html">FAQ<span>What works on each TV</span></a></li>
+          <li><a href="mailto:hello@xolo.uno">Contact Support<span>Email us</span></a></li>
+          <li><a href="privacy.html">Privacy Policy<span>No account, no ads, no analytics</span></a></li>
+          <li><a href="terms.html">Terms of Service<span>The fine print</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Kendibah is not affiliated with Roku, Samsung, Google, Amazon, LG or VIZIO. Roku is a trademark of Roku, Inc. Samsung and The Frame are trademarks of Samsung Electronics Co., Ltd. Google TV and Android TV are trademarks of Google LLC. Amazon and Fire TV are trademarks of Amazon.com, Inc. or its affiliates. LG and webOS are trademarks of LG Electronics Inc. VIZIO and SmartCast are trademarks of VIZIO, Inc.</p>
+    <p>Apple, the Apple logo, iPhone and Siri are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p>
+    <p>&copy; 2026 Erik Jimenez</p>
+  </footer>
+
 </body>
 </html>
