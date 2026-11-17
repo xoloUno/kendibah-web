@@ -26,3 +26,6 @@ and the terms of service. Static HTML with no build step.
 The App Store badge loads from Apple's marketing tools
 (`toolbox.marketingtools.apple.com`). The page advertises Roku and Samsung only; the other
 brands appear in the FAQ and the footer's trademark line.
+
+Don't add `apple-itunes-app` (Smart App Banner) or `theme-color` tags to the home page: with
+them, swiping back to it in Safari on iPhone scrolled it to the top (tested 2026-11-16).

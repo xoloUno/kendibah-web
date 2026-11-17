@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kendibah — A clean remote app for your smart TV</title>
   <meta name="description" content="Kendibah is a remote for your Roku or Samsung TV, made to feel at home on iPhone and iPhone Duo. A trackpad, your keyboard and Control Center. Try it free for 7 days, then buy it once. No subscription." />
-  <meta name="apple-itunes-app" content="app-id=6827920208" />
-  <meta name="theme-color" content="#0A5BB5" />
+  <!-- No apple-itunes-app or theme-color tags: with them, swiping back to this page in Safari
+       on iPhone left it at the top instead of where the visitor was (owner's test, 2026-11-16). -->
   <link rel="icon" type="image/png" href="images/favicon-64.png" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
@@ -42,10 +42,6 @@
         --chocolate: #d39a6a;
       }
     }
-
-    /* No scroll-behavior: smooth on the root. Safari applies it to the scroll position it
-       restores on Back, and the finger lifting off an edge swipe stops that animation at the
-       top of the page. */
 
     body {
       background: var(--bg);
